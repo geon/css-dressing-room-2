@@ -9,5 +9,21 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Victor Widell",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node-uuid": "0.0.28",
+    "@types/react": "^16.0.5",
+    "@types/react-dom": "^15.5.4",
+    "@types/react-redux": "^5.0.9",
+    "@types/redux-logger": "^3.0.3",
+    "node-uuid": "^1.4.8",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux-logger": "^3.0.6",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  }
 }
