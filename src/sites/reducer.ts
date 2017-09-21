@@ -9,10 +9,10 @@ export const initialState: State = [
 	new Site()
 ];
 
-export const reducer = (state: State, action: Action) =>
-{
-    switch(action.type)
-    {
+export const reducer = (state: State, action: Action) => {
+
+	switch(action.type) {
+
         case "sites / add":
 			return add(state, new Site());
 

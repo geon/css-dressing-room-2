@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {Site} from '../site/Site';
-import {SiteComponent} from '../site/SiteComponent'
+import {Thumbnail} from '../site/Thumbnail'
 import {connect} from 'react-redux';
 import {Dispatch} from '../Dispatch';
 import {Action} from '../sites/actions';
 
 interface SitesOverviewProps {
-	sites: Array<Site>
+	sites: Array<Site>,
+	selectedSiteIndex: number
 };
 
 interface SitesOverviewDispatchProps {
@@ -19,12 +20,14 @@ const mapDispatchToProps = (dispatch: Dispatch<any>): SitesOverviewDispatchProps
 
 const render = ({
 	sites,
+	selectedSiteIndex,
 	dispatch
 }: SitesOverviewProps & SitesOverviewDispatchProps) =>
 <ul>
 	{sites.map((site, i) =>
 		<li key={site.uuid}>
-			<SiteComponent site={site} dispatch={dispatch}/>
+			{i == selectedSiteIndex ? '* ' : ''}
+			<Thumbnail site={site}/>
 			<button onClick={(e)=>dispatch({type: 'sites / remove', payload: site})}>X</button>
 		</li>
 	)}
