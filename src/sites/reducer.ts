@@ -19,6 +19,15 @@ export const reducer = (state: State, action: Action) =>
 		case "sites / remove":
 			return remove(state, action.payload);
 
+		case "site / set property color":
+		case "site / set property backgroundColor":
+		case "site / randomize":
+			return replace(
+				state,
+				action.payload.site,
+				site.reducer(action.payload.site, action)
+			);
+
 		default:
             const _exhaustiveCheck: never = action;
             return state;

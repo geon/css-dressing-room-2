@@ -10,6 +10,15 @@ export function set<T extends Object, S extends keyof T> (state: T, propertyName
 	);
 }
 
+export function sets<T extends Object> (state: T, properties: Partial<T>): T {
+
+	return Object.assign(
+		{},
+		state,
+		properties
+	);
+}
+
 export function add<T> (array: Array<T>, element: T) {
 
 	return [...array, element];

@@ -24,7 +24,7 @@ const render = ({
 <ul>
 	{sites.map((site, i) =>
 		<li key={site.uuid}>
-			<SiteComponent site={site}/>
+			<SiteComponent site={site} dispatch={dispatch}/>
 			<button onClick={(e)=>dispatch({type: 'sites / remove', payload: site})}>X</button>
 		</li>
 	)}
