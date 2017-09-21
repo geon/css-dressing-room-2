@@ -56,17 +56,27 @@ const Styled = styled.ul`
 			opacity: 0;
 			transition: opacity 0.1s;
 		}
-		&:hover button.remove {
+		&:hover > button.remove {
 
 			opacity: 1;
 		}
 
-		&.add {
-
+		&.add > button {
+			display: block;
+			width: ${thumbnailWidth}px;
+			height: ${thumbnailHeight}px;
 			color: white;
 			background-color: #eee;
 
 			text-align: center;
+
+			border: none;
+			font-size: 60px;
+
+			&:focus {
+
+				outline: none;
+			}
 		}
 	}
 `;
