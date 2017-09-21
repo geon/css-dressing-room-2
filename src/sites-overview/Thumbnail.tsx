@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {Site} from './Site';
+import {Site} from '../site/Site';
 import {Action} from '../ui/actions';
 import {Dispatch} from '../Dispatch';
-import * as siteComponent from './SiteComponent';
+import * as siteComponent from '../site/SiteComponent';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
@@ -17,9 +17,11 @@ const mapDipsatchToProps = (dispatch: Dispatch<Action>) => ({
 });
 
 const zoom = 5;
+export const thumbnailWidth = (siteComponent.width + siteComponent.padding * 2) / zoom;
+export const thumbnailHeight = (siteComponent.height + siteComponent.padding * 2) / zoom;
 const ThumbnailWrapper = styled.div`
-	width: ${(siteComponent.width + siteComponent.padding * 2) / zoom}px;
-	height: ${(siteComponent.height + siteComponent.padding * 2) / zoom}px;
+	width: ${thumbnailWidth}px;
+	height: ${thumbnailHeight}}px;
 
 	& > ${siteComponent.SiteWrapper} {
 		transform: scale(${1/zoom});

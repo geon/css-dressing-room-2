@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Site} from '../site/Site';
-import {Thumbnail} from '../site/Thumbnail'
+import {Thumbnail, thumbnailWidth, thumbnailHeight} from './Thumbnail'
 import {connect} from 'react-redux';
 import {Dispatch} from '../Dispatch';
 import {Action} from '../sites/actions';
