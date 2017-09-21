@@ -26,13 +26,7 @@ export const SiteWrapper = styled.div`
 `;
 
 const render = ({site, dispatch}: SiteComponentProps) =>
-	<SiteWrapper
-		style={site}
-		onClick={(e)=>dispatch({
-			type:'site / randomize',
-			payload: {site}
-		})}
-	>
+	<SiteWrapper style={site}>
 		<h2>Lorem ipsum</h2>
 		<p className="byline vcard">By <a className="author fn">Victor Widell</a><span className="publish-date"> on <time>August 6, 2012 11:45 am</time></span> </p>
 		<p className="lead">Dolor sit amet, consectetur adipiscing elit. Sed enim turpis, placerat vel faucibus eget, accumsan semper nisl. Curabitur suscipit laoreet enim nec luctus. Sed quis ornare massa. Sed posuere turpis nec mi porta at dictum libero condimentum. Nulla nulla sapien, convallis sed egestas vel, aliquet a nibh.</p>
