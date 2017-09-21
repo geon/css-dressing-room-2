@@ -6,22 +6,18 @@ import {Site} from '../site/Site';
 
 
 interface RootComponentProps {
-	sites: Array<Site>,
-	selectedSiteIndex: number
+	sites: Array<Site>
 };
 
 const mapStateToProps = ({
-	sites,
-	ui
+	sites
 }: State): RootComponentProps => ({
-	sites,
-	selectedSiteIndex: ui.selectedSiteIndex
+	sites
 });
 
-const render = ({sites, selectedSiteIndex}: RootComponentProps) =>
+const render = ({sites}: RootComponentProps) =>
 <SitesOverview
 	sites={sites}
-	selectedSiteIndex={selectedSiteIndex}
 />;
 
 export const RootComponent = connect(mapStateToProps, null)(render);

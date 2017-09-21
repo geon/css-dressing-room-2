@@ -4,10 +4,11 @@ import {Thumbnail} from '../site/Thumbnail'
 import {connect} from 'react-redux';
 import {Dispatch} from '../Dispatch';
 import {Action} from '../sites/actions';
+import styled from 'styled-components';
+
 
 interface SitesOverviewProps {
-	sites: Array<Site>,
-	selectedSiteIndex: number
+	sites: Array<Site>
 };
 
 interface SitesOverviewDispatchProps {
@@ -18,22 +19,72 @@ const mapDispatchToProps = (dispatch: Dispatch<any>): SitesOverviewDispatchProps
 	dispatch
 })
 
+const removeButtonRadius = 16;
+const removeStickOut = 10;
+const Styled = styled.ul`
+	padding: 0;
+	overflow: auto;
+
+	display: flex;
+	flex-direction: row;
+
+	li {
+		flex: 0 0 auto;
+
+		cursor: pointer;
+		list-style: none;
+
+		margin-right: 10px;
+		margin-top: ${removeStickOut}px;
+
+		position: relative;
+		> button.remove {
+
+			position: absolute;
+			top: ${-removeStickOut}px;
+			right: ${-removeStickOut}px;
+
+			display: block;
+			height: ${removeButtonRadius*2}px;
+			width: ${removeButtonRadius*2}px;
+			border-radius: ${removeButtonRadius}px;
+			border: none;
+
+			color: white;
+			background: red;
+
+			opacity: 0;
+			transition: opacity 0.1s;
+		}
+		&:hover button.remove {
+
+			opacity: 1;
+		}
+
+		&.add {
+
+			color: white;
+			background-color: #eee;
+
+			text-align: center;
+		}
+	}
+`;
+
 const render = ({
 	sites,
-	selectedSiteIndex,
 	dispatch
 }: SitesOverviewProps & SitesOverviewDispatchProps) =>
-<ul>
+<Styled>
 	{sites.map((site, i) =>
 		<li key={site.uuid}>
-			{i == selectedSiteIndex ? '* ' : ''}
 			<Thumbnail site={site}/>
-			<button onClick={(e)=>dispatch({type: 'sites / remove', payload: site})}>X</button>
+			<button className="remove" onClick={(e)=>dispatch({type: 'sites / remove', payload: site})}>X</button>
 		</li>
 	)}
 	<li className="add">
 		<button onClick={(e)=>dispatch({type: 'sites / add'})}>+</button>
 	</li>
-</ul>;
+</Styled>;
 
 export const SitesOverview = connect(null, mapDispatchToProps)(render);
