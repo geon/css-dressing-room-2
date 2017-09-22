@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Site} from '../site/Site';
 import {Action} from '../ui/actions';
 import {Dispatch} from '../Dispatch';
-import * as siteComponent from '../site/SiteComponent';
+import * as siteComponent from '../site-editor/SiteComponent';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
@@ -32,7 +32,7 @@ const ThumbnailWrapper = styled.div`
 const render = ({site, dispatch}: ThumbnailProps) =>
 	<ThumbnailWrapper
 		onClick={(e)=>dispatch({
-			type:'ui / set selected site',
+			type:'ui / set selected site uuid',
 			payload: site
 		})}
 	>

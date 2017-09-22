@@ -1,7 +1,6 @@
 import {Site} from '../site/Site';
-import * as site from '../site/actions';
 
-export type Action = site.Action | {
+export type Action = {
 
 	type: 'sites / add';
 

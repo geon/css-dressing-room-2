@@ -3,6 +3,7 @@ module.exports = {
 	entry: "./src/index.tsx",
 	output: {
 		path: __dirname,
+		publicPath: '/',
 		filename: "bundle.js"
 	},
 	node: {

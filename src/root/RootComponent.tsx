@@ -3,12 +3,11 @@ import {connect} from 'react-redux';
 import {State} from './reducer';
 import {SitesOverview} from '../sites-overview/component'
 import {Site} from '../site/Site';
-import {SiteComponent} from '../site/SiteComponent';
-
+import {SiteEditor} from '../site-editor/component';
 
 interface RootComponentProps {
 	sites: Array<Site>,
-	selectedSite: Site
+	selectedSite?: Site
 };
 
 const mapStateToProps = ({
@@ -16,7 +15,7 @@ const mapStateToProps = ({
 	ui
 }: State): RootComponentProps => ({
 	sites,
-	selectedSite: sites[ui.selectedSiteIndex]
+	selectedSite: sites.find(x => x.uuid == ui.selectedSiteUuid)
 });
 
 const render = ({
@@ -25,7 +24,7 @@ const render = ({
 }: RootComponentProps) =>
 	<div>
 		<SitesOverview sites={sites} />
-		<SiteComponent site={selectedSite}/>
+		<SiteEditor selectedSite={selectedSite} />
 	</div>
 ;
 

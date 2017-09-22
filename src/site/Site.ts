@@ -1,15 +1,59 @@
 import {v4 as uuid} from 'node-uuid';
+import {Styles} from './Style';
+
 
 export class Site {
 
 	uuid: string;
-	color: string;
+	styles: Styles;
 	backgroundColor: string;
 
 	constructor () {
 
 		this.uuid = uuid();
-		this.color = '#f08';
-		this.backgroundColor= '#333';
+		this.styles = {
+			h2: {
+				type: 'text',
+				fontFamily: 'Georgia',
+				color: '#55ccff',
+				fontSize: '2.25em',
+				fontWeight: 'normal',
+				fontStyle: 'normal'
+			},
+			a: {
+				type: 'link',
+				color: '#ff44aa',
+				fontWeight: 'normal',
+				fontStyle: 'normal'
+			},
+			p: {
+				type: 'text',
+				color: '#cccccc',
+				fontSize: '1em',
+				fontFamily: 'Verdana',
+				fontWeight: 'normal',
+				fontStyle: 'normal'
+			},
+			blockquote: {
+				type: 'text',
+				color: '#55ccff',
+				fontSize: '1.25em',
+				fontFamily: 'Verdana',
+				fontWeight: 'normal',
+				fontStyle: 'italic'
+			},
+			lead: {
+				type: 'text',
+				color: '#eeeeee',
+				fontSize: '1.25em',
+				fontFamily: 'Verdana',
+				fontWeight: 'normal',
+				fontStyle: 'normal'
+			},
+			background: {
+				type: 'background',
+				backgroundColor: '#444444'
+			}
+		};
 	}
 }

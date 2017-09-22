@@ -2,46 +2,41 @@ import {Action} from './actions';
 import {sets} from '../immutate';
 import * as sites from '../sites/reducer';
 import * as sitesActions from '../sites/actions';
+import {Site} from '../site/Site';
 
 export interface State {
-    selectedSiteIndex: number
+    selectedSiteUuid?: string,
+    selectedStyleName: string
 };
 
 export const initialState: State = {
-    selectedSiteIndex: 0
+    selectedStyleName: 'background'
 }
 
 export const reducer = (state: State, action: Action | sitesActions.Action, sites: sites.State) => {
 
     switch(action.type) {
 
-        case "ui / set selected site":
-            let index = sites.indexOf(action.payload);
-            if (index == -1) {
-                return state;
-            }
-			return sets(state, {selectedSiteIndex: index});
+        case "ui / set selected site uuid":
+            return sets(state, {selectedSiteUuid: action.payload.uuid});
+
+        case "ui / set selected style name":
+            return sets(state, {selectedStyleName: action.payload});
 
         case "sites / add":
-			return sets(state, {selectedSiteIndex: sites.length - 1});
+			return state;
 
         case "sites / remove":
-            const removedIndex = sites.indexOf(action.payload);
 
-            // Inore invalid removes.
-            if (removedIndex == -1) {
-                return state;
-            }
+            if (state.selectedSiteUuid == action.payload.uuid) {
 
-            // When removing the selected, select next left.
-            if (removedIndex == state.selectedSiteIndex) {
-                return sets(state, {selectedSiteIndex: Math.max(0, state.selectedSiteIndex - 1)});
+                return sets(state, {selectedSiteUuid: undefined});
             }
 
             return state;
 
 		default:
-            // const _exhaustiveCheck: never = action;
+            const _exhaustiveCheck: never = action;
             return state;
     }
 }

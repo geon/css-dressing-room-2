@@ -14,7 +14,7 @@ export const initialState: State = {
 	ui: ui.initialState
 };
 
-export const reducer = (state: State, action: Action) => {
+export const reducer = (state: State, action: Action): State => {
 
 	return {
 		sites: sites.reducer(
