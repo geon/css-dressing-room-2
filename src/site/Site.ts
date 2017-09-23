@@ -1,4 +1,3 @@
-import {v4 as uuid} from 'node-uuid';
 import {Styles} from './Style';
 
 
@@ -8,9 +7,9 @@ export class Site {
 	styles: Styles;
 	backgroundColor: string;
 
-	constructor () {
+	constructor (uuid: string) {
 
-		this.uuid = uuid();
+		this.uuid = uuid;
 		this.styles = {
 			h2: {
 				type: 'text',

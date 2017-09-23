@@ -21,14 +21,14 @@ export const reducer = (state: State, action: Action | sitesActions.Action, site
             return sets(state, {selectedSiteUuid: action.payload.uuid});
 
         case "ui / set selected style name":
-            return sets(state, {selectedStyleName: action.payload});
+            return sets(state, {selectedStyleName: action.payload.uuid});
 
         case "sites / add":
 			return state;
 
         case "sites / remove":
 
-            if (state.selectedSiteUuid == action.payload.uuid) {
+            if (state.selectedSiteUuid == action.payload.site.uuid) {
 
                 return sets(state, {selectedSiteUuid: undefined});
             }

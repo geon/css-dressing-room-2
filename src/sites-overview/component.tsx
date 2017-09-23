@@ -3,8 +3,9 @@ import {Site} from '../site/Site';
 import {Thumbnail, thumbnailWidth, thumbnailHeight} from './Thumbnail'
 import {connect} from 'react-redux';
 import {Dispatch} from '../Dispatch';
-import {Action} from '../sites/actions';
+import {Action, add, remove} from '../sites/actions';
 import styled from 'styled-components';
+import {v4 as uuid} from 'node-uuid';
 
 
 interface SitesOverviewProps {
@@ -89,11 +90,11 @@ const render = ({
 	{sites.map((site, i) =>
 		<li key={site.uuid}>
 			<Thumbnail site={site}/>
-			<button className="remove" onClick={(e)=>dispatch({type: 'sites / remove', payload: site})}>X</button>
+			<button className="remove" onClick={(e)=>dispatch(remove(site))}>X</button>
 		</li>
 	)}
 	<li className="add">
-		<button onClick={(e)=>dispatch({type: 'sites / add'})}>+</button>
+		<button onClick={(e)=>dispatch(add(uuid()))}>+</button>
 	</li>
 </Styled>;
 

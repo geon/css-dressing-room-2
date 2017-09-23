@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Site} from '../site/Site';
 import {Styles} from '../site/Style';
-import {Action} from '../ui/actions';
+import {Action, setSelectedStyleName} from '../ui/actions';
 import {Dispatch} from '../Dispatch';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
@@ -15,7 +15,7 @@ export interface SiteComponentDispatchProps {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) : SiteComponentDispatchProps=> ({
-	dispatchEdit: (styleName) => (e => dispatch({type: 'ui / set selected style name', payload: styleName}))
+	dispatchEdit: (styleName) => (e => dispatch(setSelectedStyleName(styleName)))
 });
 
 export const width = 600;

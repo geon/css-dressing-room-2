@@ -3,7 +3,7 @@ import {Site} from '../site/Site';
 import {Thumbnail, thumbnailWidth, thumbnailHeight} from '../sites-overview/Thumbnail'
 import {connect} from 'react-redux';
 import {Dispatch} from '../Dispatch';
-import {Action} from './actions';
+import {Action, randomize} from './actions';
 import styled from 'styled-components';
 import {SiteComponent} from '../site-editor/SiteComponent';
 
@@ -28,7 +28,7 @@ const render = ({
 	dispatch
 }: SiteEditorProps & SiteEditorDispatchProps) =>
 <div>
-	<button onClick={(e)=>selectedSite && dispatch({type: 'site editor / randomize', payload: selectedSite.uuid})}>Randomize</button>
+	<button onClick={(e)=>selectedSite && dispatch(randomize(selectedSite.uuid))}>Randomize</button>
 	{selectedSite && <SiteComponent site={selectedSite}/>}
 </div>;
 
