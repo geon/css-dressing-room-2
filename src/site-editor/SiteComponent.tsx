@@ -81,7 +81,7 @@ const render = ({site, dispatchEdit}: SiteComponentOwnProps & SiteComponentDispa
 
 	return <SiteWrapper styles={site.styles} onClick={dispatchEdit('background')}>
 		<h2 onClick={dispatchEdit('h2')}>Lorem ipsum</h2>
-		<p className="byline vcard">
+		<p className="byline vcard" onClick={dispatchEdit('p')}>
 			By <a className="author fn" onClick={dispatchEdit('a')}>Victor Widell</a>
 			<span className="publish-date"> on <time>August 6, 2012 11:45 am</time></span>
 		</p>
