@@ -52,7 +52,22 @@ const render = ({
 
 		case 'text':
 			return <div>
-				TextStyle
+				<select value={style.color} onChange={(e) => dispatch(setTextStyleProperty('color', e.currentTarget.value))}>
+					{colors.map(color => <option key={color} value={color}>{color}</option>)}
+				</select>
+				<select value={style.fontWeight} onChange={(e) => dispatch(setTextStyleProperty('fontWeight', e.currentTarget.value as FontWeight))}>
+					{fontWeights.map(fontWeight => <option key={fontWeight} value={fontWeight}>{fontWeight}</option>)}
+				</select>
+				<select value={style.fontStyle} onChange={(e) => dispatch(setTextStyleProperty('fontStyle', e.currentTarget.value as FontStyle))}>
+					{fontStyles.map(fontStyles => <option key={fontStyles} value={fontStyles}>{fontStyles}</option>)}
+				</select>
+				<select value={style.fontSize} onChange={(e) => dispatch(setTextStyleProperty('fontSize', e.currentTarget.value as FontSize))}>
+					{fontSizes.map(fontSize => <option key={fontSize} value={fontSize}>{fontSize}</option>)}
+				</select>
+				<select value={style.fontFamily} onChange={(e) => dispatch(setTextStyleProperty('fontFamily', e.currentTarget.value as FontFamily))}>
+					{fontFamilies.map(fontFamily => <option key={fontFamily} value={fontFamily}>{fontFamily}</option>)}
+				</select>
+
 				{JSON.stringify(style)}
 			</div>
 
