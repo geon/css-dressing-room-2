@@ -1,5 +1,6 @@
 import {Site} from '../site/Site';
 import {Action} from '../Action';
+import {StyleName} from '../site/Style';
 
 export type Action = SetSelectedSiteUuid | SetSelectedStyleName;
 
@@ -15,12 +16,12 @@ export const setSelectedSiteUuid = (uuid: string): SetSelectedSiteUuid => ({
 });
 
 type SetSelectedStyleName = Action <'ui / set selected style name', {
-	uuid: string
+	styleName: StyleName
 }>;
 
-export const setSelectedStyleName = (uuid: string): SetSelectedStyleName => ({
+export const setSelectedStyleName = (styleName: StyleName): SetSelectedStyleName => ({
 	type: 'ui / set selected style name',
 	payload: {
-		uuid
+		styleName
 	}
 });

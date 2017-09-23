@@ -3,10 +3,11 @@ import {sets} from '../immutate';
 import * as sites from '../sites/reducer';
 import * as sitesActions from '../sites/actions';
 import {Site} from '../site/Site';
+import {StyleName} from '../site/Style';
 
 export interface State {
     selectedSiteUuid?: string,
-    selectedStyleName: string
+    selectedStyleName: StyleName
 };
 
 export const initialState: State = {
@@ -21,7 +22,7 @@ export const reducer = (state: State, action: Action | sitesActions.Action, site
             return sets(state, {selectedSiteUuid: action.payload.uuid});
 
         case "ui / set selected style name":
-            return sets(state, {selectedStyleName: action.payload.uuid});
+            return sets(state, {selectedStyleName: action.payload.styleName});
 
         case "sites / add":
             return sets(state, {selectedSiteUuid: action.payload.uuid});

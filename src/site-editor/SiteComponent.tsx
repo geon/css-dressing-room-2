@@ -1,21 +1,29 @@
 import * as React from 'react';
 import {Site} from '../site/Site';
-import {Styles} from '../site/Style';
+import {Styles, StyleName} from '../site/Style';
 import {Action, setSelectedStyleName} from '../ui/actions';
 import {Dispatch} from '../Dispatch';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-export interface SiteComponentProps {
-	site: Site
+export interface SiteComponentOwnProps {
+	site: Site,
+	editable?: boolean
 };
 
 export interface SiteComponentDispatchProps {
-	dispatchEdit?: (styleName: string) => ((e: React.MouseEvent<HTMLElement>) => void)
+	dispatchEdit: (styleName: StyleName) => (e: React.MouseEvent<HTMLElement>) => void
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>) : SiteComponentDispatchProps=> ({
-	dispatchEdit: (styleName) => (e => dispatch(setSelectedStyleName(styleName)))
+const mapDispatchToProps = (dispatch: Dispatch<Action>, props: SiteComponentOwnProps) : SiteComponentDispatchProps => ({
+	dispatchEdit: (styleName: StyleName) => (e: React.MouseEvent<HTMLElement>) => {
+
+		if (props.editable) {
+
+			e.stopPropagation();
+			dispatch(setSelectedStyleName(styleName));
+		}
+	}
 });
 
 export const width = 600;
@@ -69,20 +77,19 @@ export const SiteWrapper = styled.div`
 	}
 `;
 
-const render = ({site, dispatchEdit}: SiteComponentProps & SiteComponentDispatchProps) => {
+const render = ({site, dispatchEdit}: SiteComponentOwnProps & SiteComponentDispatchProps) => {
 
-	return <SiteWrapper styles={site.styles}>
-		<h2 onClick={dispatchEdit && dispatchEdit('h2')}>Lorem ipsum</h2>
+	return <SiteWrapper styles={site.styles} onClick={dispatchEdit('background')}>
+		<h2 onClick={dispatchEdit('h2')}>Lorem ipsum</h2>
 		<p className="byline vcard">
-			By <a className="author fn" onClick={dispatchEdit && dispatchEdit('a')}>Victor Widell</a>
+			By <a className="author fn" onClick={dispatchEdit('a')}>Victor Widell</a>
 			<span className="publish-date"> on <time>August 6, 2012 11:45 am</time></span>
 		</p>
-		<p className="lead" onClick={dispatchEdit && dispatchEdit('lead')}>Dolor sit amet, consectetur adipiscing elit. Sed enim turpis, placerat vel faucibus eget, accumsan semper nisl. Curabitur suscipit laoreet enim nec luctus. Sed quis ornare massa. Sed posuere turpis nec mi porta at dictum libero condimentum. Nulla nulla sapien, convallis sed egestas vel, aliquet a nibh.</p>
-		<p onClick={dispatchEdit && dispatchEdit('p')}>Curabitur ornare hendrerit lacinia. Sed et tincidunt elit. Pellentesque mi lacus, pellentesque eu porttitor vel, tempus consequat odio. Donec pharetra blandit condimentum. In nec dolor est, quis elementum purus. Mauris vel libero arcu, ac bibendum est.</p>
-		<blockquote onClick={dispatchEdit && dispatchEdit('blockquote')}>Donec quis tortor eros, a ultrices tellus. Nulla vehicula semper ipsum sed semper. Vestibulum sed condimentum odio. Suspendisse non eros ac odio consectetur malesuada. Nulla facilisi.</blockquote>
-		<p onClick={dispatchEdit && dispatchEdit('p')}>Vivamus venenatis interdum lacus, sed imperdiet lectus congue nec. Praesent et dolor sit amet eros tempus consectetur sed a elit. Integer dictum, odio eget imperdiet porta, quam libero ornare erat, a varius mi quam eget libero. Vestibulum eget laoreet urna. Integer auctor eros et augue gravida tristique. Pellentesque eget eleifend enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed luctus tristique lorem, ut commodo nulla lacinia eget.</p>
+		<p className="lead" onClick={dispatchEdit('lead')}>Dolor sit amet, consectetur adipiscing elit. Sed enim turpis, placerat vel faucibus eget, accumsan semper nisl. Curabitur suscipit laoreet enim nec luctus. Sed quis ornare massa. Sed posuere turpis nec mi porta at dictum libero condimentum. Nulla nulla sapien, convallis sed egestas vel, aliquet a nibh.</p>
+		<p onClick={dispatchEdit('p')}>Curabitur ornare hendrerit lacinia. Sed et tincidunt elit. Pellentesque mi lacus, pellentesque eu porttitor vel, tempus consequat odio. Donec pharetra blandit condimentum. In nec dolor est, quis elementum purus. Mauris vel libero arcu, ac bibendum est.</p>
+		<blockquote onClick={dispatchEdit('blockquote')}>Donec quis tortor eros, a ultrices tellus. Nulla vehicula semper ipsum sed semper. Vestibulum sed condimentum odio. Suspendisse non eros ac odio consectetur malesuada. Nulla facilisi.</blockquote>
+		<p onClick={dispatchEdit('p')}>Vivamus venenatis interdum lacus, sed imperdiet lectus congue nec. Praesent et dolor sit amet eros tempus consectetur sed a elit. Integer dictum, odio eget imperdiet porta, quam libero ornare erat, a varius mi quam eget libero. Vestibulum eget laoreet urna. Integer auctor eros et augue gravida tristique. Pellentesque eget eleifend enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed luctus tristique lorem, ut commodo nulla lacinia eget.</p>
 	</SiteWrapper>;
 }
 
-// export const SiteComponent = connect(null, mapDispatchToProps)(render);
-export const SiteComponent = render;
+export const SiteComponent = connect(null, mapDispatchToProps)(render);

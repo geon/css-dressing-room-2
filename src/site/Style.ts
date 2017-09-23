@@ -61,3 +61,5 @@ export interface Styles {
 	lead: TextStyle,
 	background: BackgroundStyle
 };
+
+export type StyleName = keyof Styles;
