@@ -14,20 +14,20 @@ export class Site {
 			h2: {
 				type: 'text',
 				fontFamily: 'Georgia',
-				color: '#55ccff',
+				color: '#5cf',
 				fontSize: '2.25em',
 				fontWeight: 'normal',
 				fontStyle: 'normal'
 			},
 			a: {
 				type: 'link',
-				color: '#ff44aa',
+				color: '#f4a',
 				fontWeight: 'normal',
 				fontStyle: 'normal'
 			},
 			p: {
 				type: 'text',
-				color: '#cccccc',
+				color: '#ccc',
 				fontSize: '1em',
 				fontFamily: 'Verdana',
 				fontWeight: 'normal',
@@ -35,7 +35,7 @@ export class Site {
 			},
 			blockquote: {
 				type: 'text',
-				color: '#55ccff',
+				color: '#5cf',
 				fontSize: '1.25em',
 				fontFamily: 'Verdana',
 				fontWeight: 'normal',
@@ -43,7 +43,7 @@ export class Site {
 			},
 			lead: {
 				type: 'text',
-				color: '#eeeeee',
+				color: '#eee',
 				fontSize: '1.25em',
 				fontFamily: 'Verdana',
 				fontWeight: 'normal',
@@ -51,7 +51,7 @@ export class Site {
 			},
 			background: {
 				type: 'background',
-				backgroundColor: '#444444'
+				backgroundColor: '#444'
 			}
 		};
 	}
