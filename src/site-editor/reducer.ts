@@ -3,7 +3,7 @@ import {add, remove, sets, set} from '../immutate';
 import {Site} from '../site/Site';
 import {randomColor} from '../site/colors';
 import * as styleEditor from '../style-editor/reducer';
-import {StyleName} from '../site/Style';
+import {StyleName, fontFamilies} from '../site/Style';
 
 
 function anyOtherColor (backgroundColor: string) {
@@ -16,22 +16,8 @@ function anyOtherColor (backgroundColor: string) {
 	return color;
 }
 
-
-
-var systemFontFamilies = [
-	'Arial',
-	'Arial Black',
-	'Comic Sans MS',
-	'Courier New',
-	'Georgia',
-	'Impact',
-	'Tahoma',
-	'Times New Roman',
-	'Trebuchet MS',
-	'Verdana'
-];
 function randomFont() {
-	return systemFontFamilies[Math.floor(Math.random()*systemFontFamilies.length)];
+	return fontFamilies[Math.floor(Math.random()*fontFamilies.length)];
 }
 
 
