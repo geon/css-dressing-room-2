@@ -24,7 +24,7 @@ export const reducer = (state: State, action: Action | sitesActions.Action, site
             return sets(state, {selectedStyleName: action.payload.uuid});
 
         case "sites / add":
-			return state;
+            return sets(state, {selectedSiteUuid: action.payload.uuid});
 
         case "sites / remove":
 
