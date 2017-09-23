@@ -6,14 +6,15 @@ import {Dispatch} from '../Dispatch';
 // import {Action, randomize} from './actions';
 import styled from 'styled-components';
 import {Action as UiAction, setSelectedStyleName} from '../ui/actions';
-
+import {colors} from '../site/colors';
+import {setLinkStyleProperty, Action} from './actions';
 
 interface SiteEditorProps {
 	style?: Style
 };
 
 interface SiteEditorDispatchProps {
-	dispatch: Dispatch<UiAction>
+	dispatch: Dispatch<UiAction | Action>
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): SiteEditorDispatchProps => ({
@@ -37,6 +38,9 @@ const render = ({
 		case 'link':
 			return <div>
 				LinkStyle
+				<select value={style.color} onChange={(e) => dispatch(setLinkStyleProperty('color', e.currentTarget.value))}>
+					{colors.map(color => <option key={color} value={color}>{color}</option>)}
+				</select>
 				{JSON.stringify(style)}
 			</div>
 

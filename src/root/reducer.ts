@@ -20,6 +20,8 @@ export const reducer = (state: State, action: Action): State => {
 		sites: sites.reducer(
 			state.sites,
 			<any> action,
+			state.ui.selectedSiteUuid,
+			state.ui.selectedStyleName
 		),
 		ui: ui.reducer(
 			state.ui,

@@ -1,7 +1,9 @@
 import {Action} from './actions';
-import {add, remove, sets} from '../immutate';
+import {add, remove, sets, set} from '../immutate';
 import {Site} from '../site/Site';
 import {randomColor} from '../site/colors';
+import * as styleEditor from '../style-editor/reducer';
+import {StyleName} from '../site/Style';
 
 
 function anyOtherColor (backgroundColor: string) {
@@ -34,8 +36,8 @@ function randomFont() {
 
 
 export type State = Site;
-
-export const reducer = (state: State, action: Action): State => {
+export type HandledActions = Action | styleEditor.HandledActions;
+export const reducer = (state: State, action: HandledActions, selectedStyleName: StyleName): State => {
 
 	switch(action.type) {
 
@@ -66,8 +68,16 @@ export const reducer = (state: State, action: Action): State => {
 				})
 			});
 
+		case 'style editor / set style property':
+
+			return sets(state, {styles: set(
+				state.styles,
+				selectedStyleName,
+				styleEditor.reducer(state.styles[selectedStyleName], action)
+			)});
+
 		default:
-            // const _exhaustiveCheck: never = action;
+            const _exhaustiveCheck: never = action;
             return state;
     }
 }
