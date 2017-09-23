@@ -1,5 +1,6 @@
 
-const fontFamilies = [
+export type FontFamily = 'Arial' | 'Arial Black' | 'Comic Sans MS' | 'Courier New' | 'Georgia' | 'Impact' | 'Tahoma' | 'Times New Roman' | 'Trebuchet MS' | 'Verdana';
+export const fontFamilies = [
 	'Arial',
 	'Arial Black',
 	'Comic Sans MS',
@@ -12,7 +13,8 @@ const fontFamilies = [
 	'Verdana'
 ];
 
-const fontSizes = [
+export type FontSize = '1em' | '1.125em' | '1.25em' | '1.5em' | '1.75em' | '2em' | '2.25em' | '2.5em' | '3em';
+export const fontSizes = [
 	'1em',
 	'1.125em',
 	'1.25em',
@@ -24,11 +26,12 @@ const fontSizes = [
 	'3em',
 ];
 
-type FontWeight = 'normal' | 'bold';
-const fontWeights: Array<FontWeight> = ['normal', 'bold'];
 
-type FontStyle = 'normal' | 'italic';
-const fontStyles: Array<FontStyle> = ['normal', 'italic'];
+export type FontWeight = 'normal' | 'bold';
+export const fontWeights: Array<FontWeight> = ['normal', 'bold'];
+
+export type FontStyle = 'normal' | 'italic';
+export const fontStyles: Array<FontStyle> = ['normal', 'italic'];
 
 export interface LinkStyle  {
 	type: 'link',
