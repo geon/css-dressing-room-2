@@ -52,7 +52,7 @@ export const SiteWrapper = styled.div`
 		font-style: ${({styles}: {styles: Styles}) => styles.a.fontStyle};
 	}
 
-	> lead {
+	> p.lead {
 		color: ${({styles}: {styles: Styles}) => styles.lead.color};
 		font-weight: ${({styles}: {styles: Styles}) => styles.lead.fontWeight};
 		font-style: ${({styles}: {styles: Styles}) => styles.lead.fontStyle};
