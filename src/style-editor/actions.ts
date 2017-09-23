@@ -9,7 +9,8 @@ export type Action =
 	SetTextStyleProperty<'fontWeight'> |
 	SetTextStyleProperty<'fontStyle'> |
 	SetTextStyleProperty<'fontSize'> |
-	SetTextStyleProperty<'fontFamily'>
+	SetTextStyleProperty<'fontFamily'> |
+	SetBackgroundStyleProperty<'backgroundColor'>
 ;
 
 type SetTextStyleProperty<TpropertyName extends keyof TextStyle> = Action <'style editor / set style property', {
@@ -42,3 +43,17 @@ export function setLinkStyleProperty<TpropertyName extends keyof LinkStyle> (pro
 	};
 };
 
+type SetBackgroundStyleProperty<TpropertyName extends keyof BackgroundStyle> = Action <'style editor / set style property', {
+	propertyName: TpropertyName,
+	value: BackgroundStyle[TpropertyName]
+}>;
+
+export function setBackgroundStyleProperty<TpropertyName extends keyof BackgroundStyle> (propertyName: TpropertyName, value: BackgroundStyle[TpropertyName]): SetBackgroundStyleProperty<TpropertyName> {
+	return {
+		type: 'style editor / set style property',
+		payload: {
+			propertyName,
+			value
+		}
+	};
+};
