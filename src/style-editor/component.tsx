@@ -26,9 +26,33 @@ const removeStickOut = 10;
 const render = ({
 	style,
 	dispatch
-}: SiteEditorProps & SiteEditorDispatchProps) =>
-<div>
-{JSON.stringify(style)}
-</div>;
+}: SiteEditorProps & SiteEditorDispatchProps) => {
+
+	if (!style) {
+		return <div></div>;
+	}
+
+	switch (style.type) {
+
+		case 'link':
+			return <div>
+				LinkStyle
+				{JSON.stringify(style)}
+			</div>
+
+		case 'text':
+			return <div>
+				TextStyle
+				{JSON.stringify(style)}
+			</div>
+
+		case 'background':
+			return <div>
+				BackgroundStyle
+				{JSON.stringify(style)}
+			</div>
+	}
+};
+
 
 export const StyleEditor= connect(null, mapDispatchToProps)(render);
