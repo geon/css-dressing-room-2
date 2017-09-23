@@ -1,6 +1,6 @@
 
 export type FontFamily = 'Arial' | 'Arial Black' | 'Comic Sans MS' | 'Courier New' | 'Georgia' | 'Impact' | 'Tahoma' | 'Times New Roman' | 'Trebuchet MS' | 'Verdana';
-export const fontFamilies = [
+export const fontFamilies: Array<FontFamily> = [
 	'Arial',
 	'Arial Black',
 	'Comic Sans MS',
@@ -14,7 +14,7 @@ export const fontFamilies = [
 ];
 
 export type FontSize = '1em' | '1.125em' | '1.25em' | '1.5em' | '1.75em' | '2em' | '2.25em' | '2.5em' | '3em';
-export const fontSizes = [
+export const fontSizes: Array<FontSize> = [
 	'1em',
 	'1.125em',
 	'1.25em',
@@ -45,8 +45,8 @@ export interface TextStyle {
 	color: string,
 	fontWeight: FontWeight,
 	fontStyle: FontStyle,
-	fontSize: string,
-	fontFamily: string,
+	fontSize: FontSize,
+	fontFamily: FontFamily,
 };
 
 export interface BackgroundStyle  {
