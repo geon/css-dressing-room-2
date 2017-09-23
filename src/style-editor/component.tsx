@@ -7,7 +7,8 @@ import {Dispatch} from '../Dispatch';
 import styled from 'styled-components';
 import {Action as UiAction, setSelectedStyleName} from '../ui/actions';
 import {colors} from '../site/colors';
-import {setLinkStyleProperty, Action} from './actions';
+import {setLinkStyleProperty, setTextStyleProperty, setBackgroundStyleProperty, Action} from './actions';
+import {fontWeights, FontWeight, fontStyles, FontStyle, fontSizes, FontSize, fontFamilies, FontFamily} from '../site/Style';
 
 interface SiteEditorProps {
 	style?: Style
@@ -37,9 +38,14 @@ const render = ({
 
 		case 'link':
 			return <div>
-				LinkStyle
 				<select value={style.color} onChange={(e) => dispatch(setLinkStyleProperty('color', e.currentTarget.value))}>
 					{colors.map(color => <option key={color} value={color}>{color}</option>)}
+				</select>
+				<select value={style.fontWeight} onChange={(e) => dispatch(setLinkStyleProperty('fontWeight', e.currentTarget.value as FontWeight))}>
+					{fontWeights.map(fontWeight => <option key={fontWeight} value={fontWeight}>{fontWeight}</option>)}
+				</select>
+				<select value={style.fontStyle} onChange={(e) => dispatch(setLinkStyleProperty('fontStyle', e.currentTarget.value as FontStyle))}>
+					{fontStyles.map(fontStyles => <option key={fontStyles} value={fontStyles}>{fontStyles}</option>)}
 				</select>
 				{JSON.stringify(style)}
 			</div>
