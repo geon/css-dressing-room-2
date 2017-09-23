@@ -58,7 +58,9 @@ const render = ({
 
 		case 'background':
 			return <div>
-				BackgroundStyle
+				<select value={style.backgroundColor} onChange={(e) => dispatch(setBackgroundStyleProperty('backgroundColor', e.currentTarget.value))}>
+					{colors.map(color => <option key={color} value={color}>{color}</option>)}
+				</select>
 				{JSON.stringify(style)}
 			</div>
 	}
