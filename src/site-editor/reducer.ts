@@ -3,7 +3,7 @@ import {add, remove, sets, set} from '../immutate';
 import {Site} from '../site/Site';
 import {randomColor} from '../site/colors';
 import * as styleEditor from '../style-editor/reducer';
-import {StyleName, fontFamilies} from '../site/Style';
+import {StyleName, fontFamilies, fontWeights, fontStyles} from '../site/Style';
 
 
 function anyOtherColor (backgroundColor: string) {
@@ -16,10 +16,17 @@ function anyOtherColor (backgroundColor: string) {
 	return color;
 }
 
-function randomFont() {
+function randomFontFamily() {
 	return fontFamilies[Math.floor(Math.random()*fontFamilies.length)];
 }
 
+function randomFontWeight() {
+	return fontWeights[Math.floor(Math.random()*fontWeights.length)];
+}
+
+function randomFontStyle() {
+	return fontStyles[Math.floor(Math.random()*fontStyles.length)];
+}
 
 export type State = Site;
 export type HandledActions = Action | styleEditor.HandledActions;
@@ -38,22 +45,32 @@ export const reducer = (state: State, action: HandledActions, selectedStyleName:
 					}),
 					h2: sets(state.styles.h2, {
 						color: anyOtherColor(backgroundColor),
-						fontFamily: randomFont()
+						fontFamily: randomFontFamily(),
+						fontWeight: randomFontWeight(),
+						fontStyle: randomFontStyle(),
 					}),
 					a: sets(state.styles.a, {
-						color: anyOtherColor(backgroundColor)
+						color: anyOtherColor(backgroundColor),
+						fontWeight: randomFontWeight(),
+						fontStyle: randomFontStyle(),
 					}),
 					p: sets(state.styles.p, {
 						color: anyOtherColor(backgroundColor),
-						fontFamily: randomFont()
+						fontFamily: randomFontFamily(),
+						fontWeight: randomFontWeight(),
+						fontStyle: randomFontStyle(),
 					}),
 					lead: sets(state.styles.lead, {
 						color: anyOtherColor(backgroundColor),
-						fontFamily: randomFont()
+						fontFamily: randomFontFamily(),
+						fontWeight: randomFontWeight(),
+						fontStyle: randomFontStyle(),
 					}),
 					blockquote: sets(state.styles.blockquote, {
 						color: anyOtherColor(backgroundColor),
-						fontFamily: randomFont()
+						fontFamily: randomFontFamily(),
+						fontWeight: randomFontWeight(),
+						fontStyle: randomFontStyle(),
 					}),
 				})
 			});
