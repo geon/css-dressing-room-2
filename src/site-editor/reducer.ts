@@ -47,6 +47,10 @@ export const reducer = (state: State, action: HandledActions, selectedStyleName:
 						color: anyOtherColor(backgroundColor),
 						fontFamily: randomFont()
 					}),
+					lead: sets(state.styles.lead, {
+						color: anyOtherColor(backgroundColor),
+						fontFamily: randomFont()
+					}),
 					blockquote: sets(state.styles.blockquote, {
 						color: anyOtherColor(backgroundColor),
 						fontFamily: randomFont()
